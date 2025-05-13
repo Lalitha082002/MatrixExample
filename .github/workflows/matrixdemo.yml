@@ -1,0 +1,20 @@
+name: Matrix Demo
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  matrix-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        browser: [chrome, firefox]
+
+    steps:
+      - name: Print matrix values
+        run: |
+          echo "Running on OS: ${{ matrix.os }}"
+          echo "Testing on browser: ${{ matrix.browser }}"
